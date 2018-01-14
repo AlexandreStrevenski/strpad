@@ -24,7 +24,7 @@ public class StrPadRest {
             ListURL.putText(url, "");
         }
 
-        ModelAndView mv = new ModelAndView("/pad");
+        ModelAndView mv = new ModelAndView("pad");
         mv.addObject("pad", new Pad(url, text));
 
         return mv;
@@ -34,7 +34,7 @@ public class StrPadRest {
     public ModelAndView save(@RequestBody String value) {
         Pad pad = toPad(value);
         ListURL.putText(pad.getUrl(), pad.getText());
-        ModelAndView mv = new ModelAndView("/pad");
+        ModelAndView mv = new ModelAndView("pad");
         mv.addObject("pad", pad);
         return mv;
     }
