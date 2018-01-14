@@ -23,6 +23,8 @@ public class StrPadRest {
         }else{
             ListURL.putText(url, "");
         }
+        System.out.println("url"+url);
+        System.out.println("text"+text);
 
         ModelAndView mv = new ModelAndView("pad");
         mv.addObject("pad", new Pad(url, text));
@@ -33,6 +35,8 @@ public class StrPadRest {
     @PostMapping("/save")
     public ModelAndView save(@RequestBody String value) {
         Pad pad = toPad(value);
+        System.out.println("pad.getUrl():"+pad.getUrl());
+        System.out.println("pad.getText():"+pad.getText());
         ListURL.putText(pad.getUrl(), pad.getText());
         ModelAndView mv = new ModelAndView("pad");
         mv.addObject("pad", pad);
