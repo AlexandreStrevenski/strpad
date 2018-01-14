@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>str pad</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script>
+		function registerValue(url, value){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://localhost:8080/save", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(url+':'+value);
+
+            return false;
+		}
+	</script>
+
+	<style>
+		body {
+			height: 100%;
+		}
+
+		textarea {
+			border: none;
+			width: 100%;
+			height: 100vw;
+		}
+	</style>
+
+
+</head>
+<body>
+<div class="panel panel-default">
+
+	<form>
+		<textarea type="text" name="txtarea" th:text="${pad.text}" th:id="${pad.url}" onchange="return registerValue(this.id, this.value)" />
+	</form>
+</div>
+</body>
+</html>
