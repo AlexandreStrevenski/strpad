@@ -11,7 +11,7 @@
 	<script>
 		function registerValue(url, value){
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "http://localhost:8080/save", true);
+            xhttp.open("POST", "https://strpad.herokuapp.com/save", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(url+':'+value);
 
