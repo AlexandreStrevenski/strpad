@@ -1,4 +1,4 @@
-package com.strpad.com.strpad.text;
+package com.strpad.com.strpad.controller;
 
 
 import org.slf4j.Logger;
@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-/**
- * Created by Alexandre S on 13/01/2018.
- */
 @Component
 @Order(1)
 public class StrPadFilter implements Filter {
