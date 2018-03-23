@@ -33,10 +33,10 @@ public class StrPadFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
 
-        System.out.println("request.getRequestURI(): " + request.getRequestURI());
+        /*System.out.println("request.getRequestURI(): " + request.getRequestURI());
         System.out.println("request.getRemoteAddr(): " + request.getRemoteAddr());
         System.out.println("request.getRemoteHost(): " + request.getRemoteHost());
-
+        */
         chain.doFilter(request, response);
     }
 
