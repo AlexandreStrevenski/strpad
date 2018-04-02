@@ -2,14 +2,12 @@ package com.strpad.com.strpad.controller;
 
 import com.strpad.com.strpad.entity.Note;
 import com.strpad.com.strpad.service.NoteService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
 
 
 @Controller
@@ -19,7 +17,7 @@ public class NoteRest {
     private NoteService noteService;
 
     @GetMapping("/{url}")
-    public ModelAndView loadFromUrl(@PathVariable String url) {
+    public ModelAndView loadFromUrl(@PathVariable String url) throws IOException {
 
         Note note = noteService.findNoteByUrl(url);
 
@@ -33,8 +31,8 @@ public class NoteRest {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@RequestBody String value) {
-        Note note = toNote(value);
+    public ModelAndView save(@RequestBody Note note) {
+
         System.out.println("note.getUrl(): "+note.getUrl());
         System.out.println("note.getText(): "+note.getText());
 
@@ -43,14 +41,6 @@ public class NoteRest {
         ModelAndView mv = new ModelAndView("note");
         mv.addObject("note", note);
         return mv;
-    }
-
-    private Note toNote(String value) {
-        String[] split = value.split(":");
-        Note note = new Note();
-        note.setUrl(split[0]);
-        note.setText(split[1]);
-        return note;
     }
 
 }
